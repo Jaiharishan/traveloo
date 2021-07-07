@@ -94,6 +94,14 @@ $dropdown-link-hover-color: #ffffff;
 
 }
 
+@media (max-width:500px) {
+    .container{
+        width:100%;
+    }
+
+
+}
+
 .navbar-toggler {
     border: none;
 

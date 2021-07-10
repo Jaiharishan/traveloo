@@ -6,7 +6,9 @@ const User = require('../modals/User');
 router.use(express.static('public'));
 
 router.get('/', ensureAuthenticated,  (req, res) => {
-    res.render('dashboard');
+    res.render('dashboard',{
+        user:req.user
+    });
 })
 
 

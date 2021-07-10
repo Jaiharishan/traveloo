@@ -1,3 +1,19 @@
 <h1 class="text-primary">Dashboard</h1>
-
 <a href="/user/logout" class="btn btn-secondary">Logout</a>
+
+<section class="p-5">
+    <div class="container d-flex flex-column align-items-center">
+        <div class="h1 text-dark text-center">My Details</div>
+
+        <div class="card d-flex flex-column align-items-center my-3 mx-sm-5 py-2 px-3">
+            <img src="https://randomuser.me/api/portraits/men/11.jpg" class="img-fluid rounded-circle mt-3 mb-2" width="125px" alt="abc">
+            <div class="card-body">
+                <p class="lead"> <span class="text-primary fw-bold">name:</span> <%= user.username %></p>
+                <p class="lead"> <span class="text-primary fw-bold">email:</span>  <%= user.email %></p>
+                <p class="lead"> <span class="text-primary fw-bold">gender:</span>  <%= user.gender %></p>
+                <p class="lead"> <span class="text-primary fw-bold">nationality:</span>  <%= user.country%></p>
+
+            </div>
+        </div>
+    </div>
+</section>

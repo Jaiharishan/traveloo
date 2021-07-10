@@ -1,0 +1,98 @@
+<div class="d-flex w-100 h-100 align-items-center justify-content-center">
+    
+
+    <form action="/user/register" method="POST" class="d-flex flex-column m-auto mt-2 w-25 py-1 px-3" id="reg">
+
+        <div class="h2 mx-0 mt-2 fw-bold text-center">
+            <a href="/" class="text-decoration-none text-dark">Traveloo</a>
+        </div>
+        <div class="h2 mx-0 mb-2 mt-1 text-primary">Register</div>
+
+        <%- include('../views/messages.ejs') %>
+
+        <div class="mb-3">
+            <label for="username" class="form-label">User name</label>
+            <input type="text" class="form-control" id="username" name="username" value="<%= typeof username != 'undefined' ? username : '' %>" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" value="<%= typeof email != 'undefined' ? email : '' %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="country" class="form-label">Nationality</label>
+            <input class="form-control" list="datalistOptions" id="country" name="country" placeholder="Select your country" value="<%= typeof country != 'undefined' ? country : '' %>" required>
+            <datalist id="datalistOptions">
+                <option value="India"></option>
+                <option value="Singapore">
+                <option value="America">
+                <option value="Japan">
+                <option value="Saudi Arabia">
+                <option value="United Kingdom">
+            </datalist>
+        </div>
+
+        <div class="row mb-3 mt-3">
+            <div class="col">
+                <input type="number" class="form-control" placeholder="Age" name="age" id='age'
+                value="<%= typeof age != 'undefined' ? age : '' %>"
+                required>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="gender" list="genders" name="gender" id="gender" value="<%= typeof gender != 'undefined' ? gender : '' %>" required>
+                <datalist id="genders">
+                        <option value="Male"></option>
+                        <option value="Female"></option>
+                        <option value="Others"></option>
+                </datalist>
+                
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" id="password" value="<%= typeof password != 'undefined' ? password : '' %>" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="password2" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" name="password2" id="password2" value="<%= typeof password2 != 'undefined' ? password2 : '' %>" required>
+        </div>
+
+        <div class="mb-2 form-check">
+          <input type="checkbox" class="form-check-input" name="check" id="check" required>
+          <label class="form-check-label" for="check">I agree all the details are true to my knowledge</label>
+        </div>
+
+        <div class="my-1 text-dark lead">Have an account <a href="/user/login" class="text-decoration-none text-primary fw-bold">login</a></div>
+
+
+
+        <button type="button" class="btn btn-primary btn-lg text-white align-self-center mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Register
+        </button>
+        
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">User confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Make sure that all the given credentials are true so that we can give you our quality service!
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary text-light">Confirm</button>
+                    <button type="button" class="btn btn-secondary text-light" data-bs-dismiss="modal">not Confirm</button>
+                </div>
+            </div>
+            </div>
+        </div>
+      </form>
+</div>
+
+

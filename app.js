@@ -1,10 +1,13 @@
 // all imports
 const express = require('express');
 const app = express();
+
 const expressLayouts = require('express-ejs-layouts');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 
 // dbkey
@@ -13,9 +16,11 @@ const db = require('./config/dbkey').mongoURI;
 // routers
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
+const dashboardRouter = require('./routes/dashboard');
 
 
-// passport
+// passportjs import
+require("./config/passport")(passport);
 
 
 // setting mongoose
@@ -25,48 +30,53 @@ mongoose.connect(db, {useNewUrlParser:true, useUnifiedTopology:true})
     .catch(err => console.log(err));
 
 
+
 // setting ejs and ejs layouts
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 
 // body parser
+app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 
 app.use(express.static('public'));
+
 // express session passport middleware and global vars should be added
 
 // // Express session
-// app.use(
-//     session({
-//         secret: 'secret',
-//         resave: true,
-//         saveUninitialized: true
-//     })
-//   );
+app.use(
+    session({
+        secret: 'secret',
+        resave: true,
+        saveUninitialized: true
+    })
+  );
   
-// // Passport middleware
-// app.use(passport.initialize());
-// app.use(passport.session());
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
   
 // // Connect flash
-// app.use(flash());
+app.use(flash());
   
 // // Global variables
-// app.use(function(req, res, next) {
-//     res.locals.success_msg = req.flash('success_msg');
-//     res.locals.error_msg = req.flash('error_msg');
-//     res.locals.error = req.flash('error');
-//     next();
-// });
+app.use(function(req, res, next) {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.login_msgs = [];
+    // res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+});
+
 
 // routers
 app.use('/', indexRouter);
 
-
-
 app.use('/user', userRouter);
+
+app.use('/dashboard', dashboardRouter);
 
 // port
 const PORT = process.env.PORT || 4000;

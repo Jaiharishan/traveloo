@@ -6,6 +6,8 @@ $btn-padding-x-lg: 20px;
 $dropdown-link-hover-bg: #2b91ff;
 $dropdown-link-hover-color: #ffffff;
 
+$input-btn-focus-width: 0;
+$input-btn-focus-box-shadow:    0 0 0;
 
 
 
@@ -85,6 +87,7 @@ $dropdown-link-hover-color: #ffffff;
     }
 }
 
+
 @media (min-width:768px) {
 
     #showcase-text {
@@ -99,7 +102,6 @@ $dropdown-link-hover-color: #ffffff;
         width:100%;
     }
 
-
 }
 
 .navbar-toggler {
@@ -109,4 +111,11 @@ $dropdown-link-hover-color: #ffffff;
 
 .navbar-toggler:focus {
     box-shadow: none;
+}
+
+
+#reg {
+    border:1px solid rgb(190, 190, 190);
+    border-radius: 1em;
+    min-width: 320px;
 }

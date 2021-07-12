@@ -43,3 +43,6 @@ const userSchema = new moongoose.Schema({
 const User = moongoose.model('User', userSchema);
 
 module.exports = User;
+
+// console.log(User.find({});
+
